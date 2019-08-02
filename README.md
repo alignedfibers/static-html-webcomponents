@@ -27,7 +27,7 @@ here: https://www.youtube.com/watch?v=3Tr-scf7trE    - I will attempt to adapt c
 
 Caching on the client and rehydrating the flattened elements by attaching the shadow dom and recording hot routes and client interaction
 that will help prioritize rehydration. Also want to do stuff with element dependencies to ensure complete enabling and disabling of
-component features. Specifically, not all components need to be ready before they can become interactive. `Example: My member login button should be prioritized over and advertisement scroller intended for a new visitor to join.` - I do not have an experiment in mind for this yet at this time, however what I do know is: Once we start recording data about user interaction on the client, we will only deliver "Self Optimizing" experience to visitors who are detected to be on fast reliable network and will switch it off as soon as there is any connectivity issues. That is about it for imagining these steps up
+component features. Specifically, not all components need to be ready before they can become interactive. `Example: My member login button should be prioritized over an advertisement scroller intended for a new visitor to join.` - I do not have an experiment in mind for this yet at this time, however what I do know is: Once we start recording data about user interaction on the client, we will only deliver "Self Optimizing" experience to visitors who are detected to be on fast reliable network and will switch it off as soon as there is any connectivity issues. That is about it for imagining these steps up
 
 ## *Hey, 
 
