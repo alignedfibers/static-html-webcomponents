@@ -1,3 +1,8 @@
+// This provides the DOM API, so load it first.
+var register = require("@skatejs/ssr/register");
+// Renders the provided DOM tree to a string.
+const render = require("@skatejs/ssr");
+
 class Hello extends HTMLElement {
     constructor() {
       super();

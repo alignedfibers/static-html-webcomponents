@@ -1,18 +1,16 @@
 # static-html-webcomponents
 
-Creating an environment to easily convert web components authored in ES6 JS Module browser standard format
-to static webcomponents rendered on the serverside and can be rehydrated on the client or within ac CF Worker
-These components should load quickly and allow Graceful Enhancement / Progressive Enhancement
-via Shadow Dom attachement and may allow enhancements through lazy-loading techniques. Completing mutltiple
-experiments to get these all working.
+I am using this project to house and build and environment where I can easily convert web components authored in ES6 JS Module browser standard format to static webcomponents rendered on the serverside and can be rehydrated on the client or within ac CF Worker.
+These components should load quickly and allow Progressive Enhancement via Shadow Dom attachement and "rehydration" and may someday allow shadow dom attachment and graceful enhancements through lazy-loading techniques. I will be Completing multiple
+experiments shown below to help me get all of the goodness I want in my build and delivery environment working.
 
-##First experiment:
+##First experiment: Server Side Rendering / Pre-Rendering of ES6 Web Components
 Headroom has been made in this area, I am following the example by Trey Shugart here: https://tinyurl.com/y22kuqfq
 to PreRender my first vanilla webcomponents and compose them in consumable html documents.
 
 ##Second experiment:
-Replace instances of custom-component tags with the pre generated static markup as they pass through cloudflare worker and rehydrate on the client. I will try to do this Using standard HTML markup we would normally use in an html document, I will use pregenerated list of components that need to be flattened by pathname and will be used in the CF Worker to complete the replacement. May use something like ReactDOM to complete the flattening of these elements on the CF Worker - Sevki Hasirci wrote a rough guide and interesting read on how to complete some easy server side rendering within a CF Worker and that writeup can be found here: 
-https://blog.cloudflare.com/serverless-pwa-react-cloudflare-workers/
+From within cloudflare worker replace any custom-component tags found in the requested html file with the flattened html of that component fetched from a flat-components directory on the server (ghpages). The tooling used to generate the flattended components is: @skate/ssr.  Using standard HTML markup for the index file, custom-component tags will be replaced if they exist within a pregenerated list of components that need to be flattened. Considering something like ReactDOM to complete the flattening of these elements on the CF Worker. Sevki Hasirci wrote a rough guide and interesting read on how to complete some easy server side rendering within a CF Worker and that writeup can be found here: https://blog.cloudflare.com/serverless-pwa-react-cloudflare-workers/ -This resource can prove helpful even if I decide not to go with ReactDOM, Do to technicallities, ReactDOM may not be the best tool because I am serving HTML
+files, hower I may be able to use .js files instead. The goal is to pre-render as much as possible and lower the workload in the CF Worker. We will cache the flat-components on CF. If components are requested via the custom domain they will be wrapped with <html></html> tags. If they are fetched from the ghpages subdomain, then they should not be wrapped and should be maluable within the CF Worker. *Need to complete some reading to see how I can cache files fetched, and compose multiple cached files together within the CF Worker.
 
 ##Third experiment:
 I have been thinking about Critical Rendering Paths, paths that are highly visited, and the importance of flattened html on first

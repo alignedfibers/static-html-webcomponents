@@ -21,6 +21,7 @@
     "eslint": "^6.1.0",
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.1",
+    "mem": "4.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-render": "^3.0.0",
