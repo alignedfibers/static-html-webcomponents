@@ -1,6 +1,6 @@
 # static-html-webcomponents
 
-I am using this project to house and build and environment where I can easily convert web components authored in ES6 JS Module browser standard format to static webcomponents rendered on the serverside and can be rehydrated on the client or within ac CF Worker.
+I am using this project to house and build an environment where I can easily convert web components authored in ES6 JS Module browser standard format to static webcomponents rendered on the serverside and can be rehydrated on the client or within ac CF Worker.
 These components should load quickly and allow Progressive Enhancement via Shadow Dom attachement and "rehydration" and may someday allow shadow dom attachment and graceful enhancements through lazy-loading techniques. I will be Completing multiple
 experiments shown below to help me get all of the goodness I want in my build and delivery environment working.
 
