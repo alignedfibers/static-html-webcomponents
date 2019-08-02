@@ -9,12 +9,12 @@ experiments shown below to help me get all of the goodness I want in my build an
 Headroom has been made in this area, I am following the example by Trey Shugart here: https://tinyurl.com/y22kuqfq
 to PreRender my first vanilla webcomponents and compose them in consumable html documents.
 
-## Second experiment: Compose multiple components into Single HTML response from CF Worker, and cache that response
+## Second experiment: Cache and insert static-components into an HTML response in cfworker, and cache that response. (Cache the cache)
 
 From within cloudflare worker replace any custom-component tags found in the requested html file with the flattened html of that component fetched from a flat-components directory on the server (ghpages). The tooling used to generate the flattended components is: @skate/ssr.  Static HTML markup for each custom-component that exist in the list of flattened components will be inserted in place of the tags for that component. The contents or HTML within the component-tags in the HTML markup will automatically be inserted into the first <\slot><\/slot> element within the static html inserted in place of those tags. Considering something like ReactDOM to complete the insertion of these elements on the CF Worker. Sevki Hasirci wrote a rough guide and interesting read on how to complete some easy server side rendering within a CF Worker and that writeup can be found here: https://blog.cloudflare.com/serverless-pwa-react-cloudflare-workers/ -This resource can prove helpful even if I decide not to go with ReactDOM, Do to technicallities, ReactDOM may not be the best tool because I am serving HTML
 files, hower I may be able to use .js files instead. The goal is to pre-render as much as possible and lower the workload in the CF Worker. We will cache the flat-components on CF. If components are requested via the custom domain they will be wrapped with <\html\></\html\> tags. If they are fetched from the ghpages subdomain, then they should not be wrapped and should be maluable within the CF Worker. *Need to complete some reading to see how I can cache files fetched, and compose multiple cached files together within the CF Worker. Technically, you could call this experiment, caching the cache.
 
-## Third experiment:
+## Third experiment: Initating Refresh of the Cache on CF
 
 I have been thinking about Critical Rendering Paths, paths that are highly visited, and the importance of flattened html on first
 visits as apposed to any subsequent visits. I would like to establish output from a pre-render process which processes any required dynamic or live pre-rendering of site content data at the time of request and fills any custom-elements with the full markup of that 
