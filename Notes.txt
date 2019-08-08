@@ -1,0 +1,13 @@
+#!something
+babel-rc needs to be set,
+Install the babel packages @babel/core and @babel/preset which will convert ES6 to a commonjs target as node js doesn't understand ES6 targets directly.
+
+npm install --save-dev @babel/core @babel/preset-env
+
+Then you need to create one configuration file with name .babelrc in your project's root directory and add this code there
+
+{ 
+    "presets": ["@babel/preset-env"] 
+}
+
+This installation requirement may satisfy itself when you install typescript
