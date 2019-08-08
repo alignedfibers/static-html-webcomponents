@@ -1,4 +1,17 @@
 # static-html-webcomponents
+@skate/ssr is not outputing what is expected, considering alternatives to allow google to easily crawl by providing flat_html on the landingPoints which are the URLs for the pages the client will view. This means the element <\my-app> which acts as the shell for the whole application is the only element that needs to be flattened, and no data or information intended for human reading or use by the web indexing robots for indexing he site will be encapsulated within a component. Pretty much all of the experiments written below can be thrown in the trash. 
+
+## A few points about creating custom-elements - I am defining my own build process and incorporating SASS into my component files, and would like to define multiple different types of builds useful for different purposes.
+
+It is important to keep a build process that will extract encapsulated styles from the javascript components. I am not sure if there is yet a standard within CSS to define scoped styles without javascript, if so then that should be used.
+
+Another point that needs to be clear when creating custom elements, is to enhance existing webstandards elements already existing in the browsers without defining new elements, this will give default functionality prior to loading javascript or when viewing with javascript disabled.
+
+Dont flatten everything, use SASS and CSS techniques build css fragments and flatten only what is needed for initial view of landing points, do this flattening at the edge in cloudflare and log>>out the builds and dates of cache of the flat-landing and the frequency of times the cached version is accessed. Keep a running millisecond access accumulator and block those accumulations out when their is a gross change based on a (range percentage) in order to keep graphs small and usefull. Essentially I will dynamically change the frequency of times we take the action of recording, the average frequency a cached flat-landing is called. 
+
+## LOL, I will continue using names that sound like free-style bicyle and x-games stunts for processees
+
+## Below is the stuff I am going to cease working on, I may still use some of the concepts in the links but im going my own direction on this
 
 I am using this project to house and build an environment where I can easily convert web components authored in ES6 JS Module browser standard format to static webcomponents rendered on the serverside and can be rehydrated on the client or within a CF Worker.
 These components should load quickly and allow Progressive Enhancement via Shadow Dom attachement and "rehydration" and may someday allow shadow dom attachment and graceful enhancements through lazy-loading techniques. I will be Completing multiple
